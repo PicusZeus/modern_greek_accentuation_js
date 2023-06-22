@@ -1,17 +1,30 @@
 {
   "name": "modern-greek-accentuation",
-  "version": "1.0.0",
-  "description": "accentuation, syllabification and transcription in Modern Greek",
+  "version": "1.0.1",
+  "description": "accentuation, syllabification and transcription utilities for Modern Greek",
   "main": "package/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PicusZeus/modern_greek_accentuation_js.git"
+  },
   "scripts": {
     "test": "mocha"
   },
   "keywords": [
     "greek",
-    "accentuation"
+    "accentuation",
+    "modern greek",
+    "diacritics",
+    "accents",
+    "greek language",
+    "greek accents",
+    "greek diacritics",
+    "transliterate",
+    "transcript",
+    "transcription"
   ],
   "author": "Krzysztof Hilman",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "mocha": "^10.2.0"
   }

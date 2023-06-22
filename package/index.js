@@ -3,7 +3,7 @@ const {modernGreekSyllabify} = require("./syllabify")
 const {erasmianTranscription, modernTranscription} = require("./transcription")
 
 
-const modern_greek_accentuation = {
+const mga = {
     /**
      * Convert from polytonic to monotonic
      *
@@ -88,3 +88,5 @@ const modern_greek_accentuation = {
 
 
 }
+
+module.exports = mga;
