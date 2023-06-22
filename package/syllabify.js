@@ -81,6 +81,7 @@ function divideIntoSyllables(word, syllables = [], true_syllabification = false)
 }
 
 exports.divideIntoSyllables = divideIntoSyllables
+
 function modernGreekSyllabify(word, true_syllabification = true) {
     const [rest, syllables] = divideIntoSyllables(word, [], true_syllabification );
     return syllables.reverse();

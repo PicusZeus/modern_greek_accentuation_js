@@ -1,15 +1,18 @@
 {
-  "name": "mga",
+  "name": "modern-greek-accentuation",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "accentuation, syllabification and transcription in Modern Greek",
+  "main": "package/index.js",
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "greek",
+    "accentuation"
+  ],
+  "author": "Krzysztof Hilman",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "mocha": "^10.2.0"
   }
 }

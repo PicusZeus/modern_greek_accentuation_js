@@ -1,5 +1,8 @@
-const { modernGreekSyllabify, countSyllables, cutOffSyllable, divideIntoSyllables, hasVowel} = require('./syllabify');
-const {accents, DIAERESIS, OXIA, VARIA, PERISPOMENI, diacritics, vowels, list_of_def_diphthongs, diphtongs} = require("./resources");
+const {modernGreekSyllabify, countSyllables} = require('./syllabify');
+const {
+    accents, DIAERESIS, OXIA, VARIA, PERISPOMENI,
+    diacritics, vowels, list_of_def_diphthongs, diphtongs
+} = require("./resources");
 
 
 const remove_diacritics = function (...diacritics) {
@@ -22,8 +25,23 @@ const removeAccentsAndDiacriticsWithDiaeresis = remove_diacritics(...accents, ..
 const removeDiacriticsWithoutDiaeresis = remove_diacritics(...diacritics);
 const removeDiaeresis = remove_diacritics(DIAERESIS);
 
+const removeRedundantDiaeresis = function (word) {
+    const redundant_diaereseis = {'όϊ': 'όι', 'όϋ': 'όυ', 'άϋ': 'άυ', 'έϊ': 'έι'};
+    if (word.normalize('NFD').includes(DIAERESIS)) {
+        for (const [redundant_diaeresis, replacement] of Object.entries(redundant_diaereseis)) {
+            if (word.includes(redundant_diaeresis)) {
+                word = word.replaceAll(redundant_diaeresis, replacement);
+                break;
+            }
+        }
+    }
+    return word;
+};
+
+
 exports.remove = {
-  removeDiacriticsWithoutDiaeresis, removeAccentsAndDiacritics, removeAccentsAndDiacriticsWithDiaeresis, removeDiaeresis
+    removeDiacriticsWithoutDiaeresis, removeAccentsAndDiacritics,
+    removeAccentsAndDiacriticsWithDiaeresis, removeDiaeresis, removeRedundantDiaeresis
 }
 const convertToMonotonic = function (sentence_or_word, one_syllable_rule = true) {
     let _sentence_or_word = removeDiacriticsWithoutDiaeresis(sentence_or_word);
@@ -103,15 +121,14 @@ const putAccentOnSyllable = function (syllable) {
             return syllable;
         }
     }
-    syllable = remove_redundant_diaeresis(syllable);
+    syllable = removeRedundantDiaeresis(syllable);
     return syllable;
 };
 
 exports.putAccentOnSyllable = putAccentOnSyllable
 
-const where_is_accent = function (word, true_syllabification = true) {
+const whereIsAccent = function (word, true_syllabification = true) {
     const syllables = modernGreekSyllabify(word, true_syllabification);
-    const accents = ['ὰ', 'ὲ', 'ὴ', 'ὶ', 'ὸ', 'ὺ', 'ὼ'];
     const reversedSyllables = syllables.reverse();
     for (let index = 0; index < reversedSyllables.length; index++) {
         const syllable = reversedSyllables[index];
@@ -132,7 +149,9 @@ const where_is_accent = function (word, true_syllabification = true) {
     return null;
 };
 
-const put_accent = function (word, accent_name, true_syllabification = true) {
+exports.whereIsAccent = whereIsAccent
+
+const putAccent = function (word, accent_name, true_syllabification = true) {
     word = removeAccentsAndDiacritics(word);
     if (accent_name === 'ULTIMATE') {
         return put_accent_on_the_ultimate(word);
@@ -145,18 +164,8 @@ const put_accent = function (word, accent_name, true_syllabification = true) {
     }
 };
 
-const remove_redundant_diaeresis = function (word) {
-    const redundant_diaereseis = {'ὸὶ': 'ὸι', 'ὸὺ': 'ὸυ', 'ὸὐ': 'ὸυ'};
-    if (word.normalize('NFD').includes('ϊ')) {
-        for (const [redundant_diaeresis, replacement] of Object.entries(redundant_diaereseis)) {
-            if (word.includes(redundant_diaeresis)) {
-                word = word.replaceAll(redundant_diaeresis, replacement);
-                break;
-            }
-        }
-    }
-    return word;
-};
+exports.putAccent = putAccent
+
 
 const put_accent_on_the_ultimate = function (word, accent_one_syllable = true, second_accent = false) {
     word = removeAccentsAndDiacritics(word);
@@ -181,7 +190,7 @@ const put_accent_on_the_penultimate = function (word, true_syllabification = tru
         const to_be_accented = syllables[syllables.length - 2];
         syllables[syllables.length - 2] = putAccentOnSyllable(to_be_accented);
         let res = syllables.join('');
-        res = remove_redundant_diaeresis(res);
+        res = removeRedundantDiaeresis(res);
         return res;
     } else {
         return word;
@@ -198,11 +207,10 @@ const put_accent_on_the_antepenultimate = function (word, true_syllabification =
         syllables[syllables.length - 3] = putAccentOnSyllable(to_be_accented);
 
         let res = syllables.join('');
-        res = remove_redundant_diaeresis(res);
+        res = removeRedundantDiaeresis(res);
         return res;
     } else {
         return put_accent_on_the_penultimate(word);
     }
 };
 
-exports.put_accent_on_the_antepenultimate = put_accent_on_the_antepenultimate
