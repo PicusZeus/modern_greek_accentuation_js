@@ -8,6 +8,9 @@ describe("correctly divide word into syllables", ()=>{
     it("monotonic true syllabification", ()=>{
         assert.equal(String(modernGreekSyllabify("κυριου")), String(["κυ", "ριου"]))
     })
+    it("monotonic true syllabification", ()=>{
+        assert.equal(String(modernGreekSyllabify("κυρίου")), String(["κυ", "ρί", "ου"]))
+    })
         it("monotonic false syllabification", ()=>{
         assert.equal(String(modernGreekSyllabify("κυριου", false)), String(["κυ", "ρι", "ου"]))
     })

@@ -14,6 +14,9 @@ describe("Correctly removes accents and diacritics", () => {
     it("removes accents in polytonic system", () => {
         assert.equal(remove.removeAccentsAndDiacritics("ἀγαθοῦ"), "αγαθου")
     })
+    it("removes accent", ()=>{
+        assert.equal(remove.removeAccentsAndDiacritics("ρολόι"), "ρολοϊ")
+    })
     it("removes accents with diaeresis", () => {
         assert.equal(remove.removeAccentsAndDiacriticsWithDiaeresis("προϋπηρεσία"), "προυπηρεσια")
     })

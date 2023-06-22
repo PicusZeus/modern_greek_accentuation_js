@@ -10,6 +10,9 @@ describe('Transcriptions', () => {
         assert.equal(erasmianTranscription("ἥλιος"), 'helios')
     })
     it("erasmian transcription", () => {
+        assert.equal(erasmianTranscription("γνῶθι σεαυτόν"), 'gnothi seauton')
+    })
+    it("erasmian transcription", () => {
         assert.equal(erasmianTranscription("άνθρωπος"), 'anthropos')
     })
     it("modern transcription", () => {

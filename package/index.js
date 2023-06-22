@@ -18,16 +18,24 @@ const mga = {
 
     convertToMonotonic,
     /**
-     * Removes all diacritics, in monotonic and polytonic script
+     * Removes all diacritics, in monotonic and polytonic script, but diaeresis stays or is restored
      *
      * @method sanitizeGreek
      * @static
      * @param {String} text
+     * @param {Boolean} diaeresis, default true, if false, doesnt remove diaeresis, and even restores it if needed after removing an accent
      * @return {String}
      *
      */
 
-    sanitizeGreek: remove.removeAccentsAndDiacriticsWithDiaeresis,
+    sanitizeGreek: function (text, diaeresis=true) {
+        if (diaeresis) {
+            return remove.removeAccentsAndDiacriticsWithDiaeresis(text)
+        } else {
+            return remove.removeAccentsAndDiacritics(text)
+        }
+    },
+    
     /**
      * Shows placement of an accent
      *

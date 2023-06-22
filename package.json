@@ -1,6 +1,6 @@
 {
   "name": "modern-greek-accentuation",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "accentuation, syllabification and transcription utilities for Modern Greek",
   "main": "package/index.js",
   "repository": {
