@@ -1,3 +1,6 @@
+![Tests](https://github.com/PicusZeus/modern_greek_accentuation_js/actions/workflows/publish.yml/badge.svg)
+
+
 # Greek Utilities
 
 
