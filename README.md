@@ -1,7 +1,7 @@
 ![Tests](https://github.com/PicusZeus/modern_greek_accentuation_js/actions/workflows/publish.yml/badge.svg)
 
 
-# Greek Utilities
+# Modern Greek Accentuation
 
 
 A JavaScript library for Modern Greek language with utilities such as removing and putting accents,
