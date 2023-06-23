@@ -33,7 +33,7 @@ jobs:
     
   publish:
     runs-on: ubuntu-latest
-     permissions:
+    permissions:
       packages: write
       contents: write
     if: ${{ github.ref == 'refs/heads/master' }}
