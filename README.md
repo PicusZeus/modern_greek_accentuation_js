@@ -189,6 +189,17 @@ var transcription = mga.erasmianTranscription("γνῶθι σεαυτόν");
 console.log(transcription); //gnothi seauton
 ```
 
+### - simpleTranscription(text)
+Simplified transcription into latin alphabet, similar to Erasmian, but evaluats η to h.
+
+Example
+```javascript
+var transcription = mga.simpleTranscription("διεύθυνση");
+console.log(transcription); //dieuthunsh
+```
+
+
+
 
 ### - modernTranscription(text)
 Transcription according to modern (simplified) pronunciation. It's useful especially for orthotgraphical mistakes in Greek, a word with incorrect orthography should evaluate to the same value as orthographicly correctly written words.

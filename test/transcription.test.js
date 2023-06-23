@@ -6,6 +6,9 @@ describe('Transcriptions', () => {
     it("simple transcription", () => {
         assert.equal(simpleTranscription("άνθρωπος"), 'anthropos')
     })
+    it("simle transcription", ()=> {
+        assert.equal(simpleTranscription("διεύθυνση"), "dieuthunsh")
+    })
     it("erasmian transcription", () => {
         assert.equal(erasmianTranscription("ἥλιος"), 'helios')
     })

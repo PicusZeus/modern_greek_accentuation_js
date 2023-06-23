@@ -1,6 +1,6 @@
 const {convertToMonotonic, whereIsAccent, putAccent, remove} = require("./accentuation")
 const {modernGreekSyllabify} = require("./syllabify")
-const {erasmianTranscription, modernTranscription} = require("./transcription")
+const {erasmianTranscription, simpleTranscription, modernTranscription} = require("./transcription")
 
 
 const mga = {
@@ -24,7 +24,7 @@ const mga = {
      * @static
      * @param {String} text
      * @param {Boolean} diaeresis, default true, if false, doesnt remove diaeresis, and even restores it if needed after removing an accent
-     * @return {String}
+     * @returns {String}
      *
      */
 
@@ -43,7 +43,7 @@ const mga = {
      * @static
      * @param {String} word
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
-     * @return {"PENULTIMATE" || "ULTIMATE" || "ANTEPENULTIMATE" || "INCORRECT_ACCENT" || null}
+     * @returns {"PENULTIMATE" || "ULTIMATE" || "ANTEPENULTIMATE" || "INCORRECT_ACCENT" || null}
      */
     whereIsAccent,
     /**
@@ -54,7 +54,7 @@ const mga = {
      * @param {String} word
      * @param {"PENULTIMATE" || "ULTIMATE" || "ANTEPENULTIMATE"} accent_name it has to be "PENULTIMATE" or "ULTIMATE" or "ANTEPENULTIMATE"
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
-     * @return {String}
+     * @returns {String}
      * */
 
     putAccent,
@@ -66,7 +66,7 @@ const mga = {
      * @static
      * @param {string} word
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
-     * @return {Array} array with syllables
+     * @returns {Array} array with syllables
      */
 
     modernGreekSyllabify,
@@ -76,11 +76,22 @@ const mga = {
      *
      * @method erasmianTranscription
      * @static
-     * @param {String} word
-     * @return {String}
+     * @param {String} text
+     * @returns {String}
      */
 
     erasmianTranscription,
+
+    /**
+     * Simplified transcription into latin alphabet, similar to Erasmian, but evaluats η to h.
+     * 
+     * @method simpleTranscription
+     * @static
+     * @param {String} text
+     * @returns {String}
+     */
+
+    simpleTranscription,
 
     /**
      * Phonetic simplified transcription
@@ -88,7 +99,7 @@ const mga = {
      * @method modernTranscription
      * @static
      * @param {String} word
-     * @return {String}
+     * @returns {String}
      */
 
 
