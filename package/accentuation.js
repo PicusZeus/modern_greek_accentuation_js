@@ -183,6 +183,8 @@ const put_accent_on_the_ultimate = function (word, accent_one_syllable = true, s
     }
 };
 
+exports.putAccentOnTheUltimate = put_accent_on_the_ultimate
+
 const put_accent_on_the_penultimate = function (word, true_syllabification = true) {
     word = removeAccentsAndDiacritics(word);
     const syllables = modernGreekSyllabify(word, true_syllabification);
@@ -196,6 +198,8 @@ const put_accent_on_the_penultimate = function (word, true_syllabification = tru
         return word;
     }
 };
+
+exports.putAccentOnThePenultimate = put_accent_on_the_penultimate
 
 const put_accent_on_the_antepenultimate = function (word, true_syllabification = true) {
     word = removeAccentsAndDiacritics(word);
@@ -213,4 +217,6 @@ const put_accent_on_the_antepenultimate = function (word, true_syllabification =
         return put_accent_on_the_penultimate(word);
     }
 };
+
+exports.putAccentOnTheAntepenultimate = put_accent_on_the_antepenultimate
 

@@ -1,4 +1,4 @@
-const {convertToMonotonic, whereIsAccent, putAccent, remove} = require("./accentuation")
+const {convertToMonotonic, whereIsAccent, putAccent, remove, putAccentOnTheAntepenultimate, putAccentOnThePenultimate, putAccentOnTheUltimate} = require("./accentuation")
 const {modernGreekSyllabify} = require("./syllabify")
 const {erasmianTranscription, simpleTranscription, modernTranscription} = require("./transcription")
 
@@ -58,6 +58,45 @@ const mga = {
      * */
 
     putAccent,
+
+    /**
+     * Puts accent on the antepenultimate syllable, the same as putAccent(word, "ANTEPENULTIMATE")
+     * 
+     * @method putAccentOnTheAntepenultimate
+     * @static
+     * @param {String} word
+     * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
+     * @returns {String}
+     */
+
+
+    putAccentOnTheAntepenultimate,
+
+    /**
+     * Puts accent on the penultimate syllable, the same as putAccent(word, "PENULTIMATE")
+     * 
+     * @method putAccentOnThePenultimate
+     * @static
+     * @param {String} word
+     * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
+     * @returns {String}
+     */
+
+    putAccentOnThePenultimate,
+
+    /**
+     * Puts accent on the ultimate syllable, the same as putAccent(word, "ULTIMATE")
+     * 
+     * @method putAccentOnTheUltimate
+     * @static
+     * @param {String} word
+     * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
+     * @returns {String}
+     */
+
+    putAccentOnTheUltimate,
+
+
 
     /**
      * Divide word into syllables
