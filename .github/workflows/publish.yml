@@ -33,6 +33,9 @@ jobs:
     
   publish:
     runs-on: ubuntu-latest
+     permissions:
+      packages: write
+      contents: write
     if: ${{ github.ref == 'refs/heads/master' }}
     needs: [quality]
     steps:
