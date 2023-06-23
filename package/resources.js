@@ -1,13 +1,10 @@
 
-
-
-
-const PSILI = SMOOTH = "\u0313"
-const DASIA = ROUGH = "\u0314"
-const OXIA = ACUTE = "\u0301"
-const VARIA = GRAVE = "\u0300"
-const PERISPOMENI = CIRCUMFLEX = "\u0342"
-const YPOGEGRAMMENI = IOTA_SUBSCRIPT = "\u0345"
+const PSILI = "\u0313"
+const DASIA = "\u0314"
+const OXIA  = "\u0301"
+const VARIA  = "\u0300"
+const PERISPOMENI = "\u0342"
+const YPOGEGRAMMENI = "\u0345"
 const DIAERESIS = "\u0308"
 exports.DIAERESIS = DIAERESIS
 exports.VARIA = VARIA

@@ -5,7 +5,7 @@
 
 
 A JavaScript library for Modern Greek language with utilities such as removing and putting accents,
-transcription from Greek script into Latin script (both Erasmian and phonetic), dividing words into syllables.
+transcription from Greek script into Latin script (both Erasmian and phonetic), dividing words into syllables.  
 
 [![NPM](https://nodei.co/npm/modern-greek-accentuation.png)](https://nodei.co/npm/modern-greek-accentuation/)
 
