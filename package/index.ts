@@ -1,8 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const accentuation_1 = require("./accentuation");
-const syllabify_1 = require("./syllabify");
-const transcription_1 = require("./transcription");
+import { convertToMonotonic, whereIsAccent, putAccent, remove, putAccentOnTheAntepenultimate, putAccentOnThePenultimate, putAccentOnTheUltimate } from "./accentuation"
+import { modernGreekSyllabify } from "./syllabify"
+import { erasmianTranscription, simpleTranscription, modernTranscription } from "./transcription"
+
+
 const mga = {
     /**
      * Convert from polytonic to monotonic
@@ -13,7 +13,10 @@ const mga = {
      * @param {Boolean} one_syllable_rule, default true, that is removes accent from single syllable words with some exceptions.
      * @returns {String}
      */
-    convertToMonotonic: accentuation_1.convertToMonotonic,
+
+
+
+    convertToMonotonic,
     /**
      * Removes all diacritics, in monotonic and polytonic script, but diaeresis stays or is restored
      *
@@ -24,14 +27,15 @@ const mga = {
      * @returns {String}
      *
      */
-    sanitizeGreek: function (text, diaeresis = true) {
+
+    sanitizeGreek: function (text: string, diaeresis=true) {
         if (diaeresis) {
-            return accentuation_1.remove.removeAccentsAndDiacriticsWithDiaeresis(text);
-        }
-        else {
-            return accentuation_1.remove.removeAccentsAndDiacritics(text);
+            return remove.removeAccentsAndDiacriticsWithDiaeresis(text)
+        } else {
+            return remove.removeAccentsAndDiacritics(text)
         }
     },
+    
     /**
      * Shows placement of an accent
      *
@@ -41,7 +45,7 @@ const mga = {
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {"PENULTIMATE" || "ULTIMATE" || "ANTEPENULTIMATE" || "INCORRECT_ACCENT" || null}
      */
-    whereIsAccent: accentuation_1.whereIsAccent,
+    whereIsAccent,
     /**
      * Puts accent on a word ("PENULTIMATE", "ULTIMATE", "ANTEPENULTIMATE")
      *
@@ -52,37 +56,48 @@ const mga = {
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {String}
      * */
-    putAccent: accentuation_1.putAccent,
+
+    putAccent,
+
     /**
      * Puts accent on the antepenultimate syllable, the same as putAccent(word, "ANTEPENULTIMATE")
-     *
+     * 
      * @method putAccentOnTheAntepenultimate
      * @static
      * @param {String} word
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {String}
      */
-    putAccentOnTheAntepenultimate: accentuation_1.putAccentOnTheAntepenultimate,
+
+
+    putAccentOnTheAntepenultimate,
+
     /**
      * Puts accent on the penultimate syllable, the same as putAccent(word, "PENULTIMATE")
-     *
+     * 
      * @method putAccentOnThePenultimate
      * @static
      * @param {String} word
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {String}
      */
-    putAccentOnThePenultimate: accentuation_1.putAccentOnThePenultimate,
+
+    putAccentOnThePenultimate,
+
     /**
      * Puts accent on the ultimate syllable, the same as putAccent(word, "ULTIMATE")
-     *
+     * 
      * @method putAccentOnTheUltimate
      * @static
      * @param {String} word
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {String}
      */
-    putAccentOnTheUltimate: accentuation_1.putAccentOnTheUltimate,
+
+    putAccentOnTheUltimate,
+
+
+
     /**
      * Divide word into syllables
      *
@@ -92,7 +107,9 @@ const mga = {
      * @param {Boolean} true_syllabification, default true, that is treats "i" sound after consonants not as a vowel. If false, all "i" sounds treated as vowels.
      * @returns {Array} array with syllables
      */
-    modernGreekSyllabify: syllabify_1.modernGreekSyllabify,
+
+    modernGreekSyllabify,
+
     /**
      * Transcription according to erasmian (simplified) pronunciation.
      *
@@ -101,16 +118,20 @@ const mga = {
      * @param {String} text
      * @returns {String}
      */
-    erasmianTranscription: transcription_1.erasmianTranscription,
+
+    erasmianTranscription,
+
     /**
      * Simplified transcription into latin alphabet, similar to Erasmian, but evaluats η to h.
-     *
+     * 
      * @method simpleTranscription
      * @static
      * @param {String} text
      * @returns {String}
      */
-    simpleTranscription: transcription_1.simpleTranscription,
+
+    simpleTranscription,
+
     /**
      * Phonetic simplified transcription
      *
@@ -119,6 +140,11 @@ const mga = {
      * @param {String} word
      * @returns {String}
      */
-    modernTranscription: transcription_1.modernTranscription
-};
+
+
+    modernTranscription
+
+
+}
+
 module.exports = mga;

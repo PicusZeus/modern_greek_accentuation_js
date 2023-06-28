@@ -1,27 +1,27 @@
-const assert = require("assert")
-const {simpleTranscription, erasmianTranscription, modernTranscription} = require("../package/transcription")
-
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const chai_1 = require("chai");
+const { simpleTranscription, erasmianTranscription, modernTranscription } = require("../package/transcription");
 describe('Transcriptions', () => {
     it("simple transcription", () => {
-        assert.equal(simpleTranscription("άνθρωπος"), 'anthropos')
-    })
-    it("simle transcription", ()=> {
-        assert.equal(simpleTranscription("διεύθυνση"), "dieuthunsh")
-    })
+        chai_1.assert.equal(simpleTranscription("άνθρωπος"), 'anthropos');
+    });
+    it("simle transcription", () => {
+        chai_1.assert.equal(simpleTranscription("διεύθυνση"), "dieuthunsh");
+    });
     it("erasmian transcription", () => {
-        assert.equal(erasmianTranscription("ἥλιος"), 'helios')
-    })
+        chai_1.assert.equal(erasmianTranscription("ἥλιος"), 'helios');
+    });
     it("erasmian transcription", () => {
-        assert.equal(erasmianTranscription("γνῶθι σεαυτόν"), 'gnothi seauton')
-    })
+        chai_1.assert.equal(erasmianTranscription("γνῶθι σεαυτόν"), 'gnothi seauton');
+    });
     it("erasmian transcription", () => {
-        assert.equal(erasmianTranscription("άνθρωπος"), 'anthropos')
-    })
+        chai_1.assert.equal(erasmianTranscription("άνθρωπος"), 'anthropos');
+    });
     it("modern transcription", () => {
-        assert.equal(modernTranscription("χέρι"), "chieri")
-    })
+        chai_1.assert.equal(modernTranscription("χέρι"), "chieri");
+    });
     it("modern transcription", () => {
-        assert.equal(modernTranscription("διεύθυνση"), "dhiefthinsi")
-    })
-})
+        chai_1.assert.equal(modernTranscription("διεύθυνση"), "dhiefthinsi");
+    });
+});

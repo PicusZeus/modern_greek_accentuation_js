@@ -1,93 +1,86 @@
-const assert = require('assert')
-const {
-    remove, convertToMonotonic, isAccented, putAccentOnVowel,
-    putAccentOnSyllable, whereIsAccent, putAccent, removeRedundantDiaeresis
-} = require("../package/accentuation")
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const accentuation_1 = require("../package/accentuation");
+const chai_1 = require("chai");
 describe("Correctly removes accents and diacritics", () => {
     it("removes simple accents άνθρωπος", () => {
-        assert.equal(remove.removeAccentsAndDiacritics("άνθρωπος"), 'ανθρωπος')
-    })
+        chai_1.assert.equal(accentuation_1.remove.removeAccentsAndDiacritics("άνθρωπος"), 'ανθρωπος');
+    });
     it("removes accents, but diaeresis stays 'προϋπηρεσία'", () => {
-        assert.equal(remove.removeAccentsAndDiacritics("προϋπηρεσία"), 'προϋπηρεσια')
-    })
+        chai_1.assert.equal(accentuation_1.remove.removeAccentsAndDiacritics("προϋπηρεσία"), 'προϋπηρεσια');
+    });
     it("removes accents in polytonic system", () => {
-        assert.equal(remove.removeAccentsAndDiacritics("ἀγαθοῦ"), "αγαθου")
-    })
-    it("removes accent", ()=>{
-        assert.equal(remove.removeAccentsAndDiacritics("ρολόι"), "ρολοϊ")
-    })
+        chai_1.assert.equal(accentuation_1.remove.removeAccentsAndDiacritics("ἀγαθοῦ"), "αγαθου");
+    });
+    it("removes accent", () => {
+        chai_1.assert.equal(accentuation_1.remove.removeAccentsAndDiacritics("ρολόι"), "ρολοϊ");
+    });
     it("removes accents with diaeresis", () => {
-        assert.equal(remove.removeAccentsAndDiacriticsWithDiaeresis("προϋπηρεσία"), "προυπηρεσια")
-    })
-    it("removes redundant diaeresis", ()=>{
-        assert.equal(remove.removeRedundantDiaeresis("ρολόϊ"), "ρολόι")
-    })
-})
-
+        chai_1.assert.equal(accentuation_1.remove.removeAccentsAndDiacriticsWithDiaeresis("προϋπηρεσία"), "προυπηρεσια");
+    });
+    it("removes redundant diaeresis", () => {
+        chai_1.assert.equal(accentuation_1.remove.removeRedundantDiaeresis("ρολόϊ"), "ρολόι");
+    });
+});
 describe("Correctly converts to monotonic", () => {
     it("ἀγαθοῦ => αγαθού", () => {
-        assert.equal(convertToMonotonic("ἀγαθοῦ"), "αγαθού")
-    })
+        chai_1.assert.equal((0, accentuation_1.convertToMonotonic)("ἀγαθοῦ"), "αγαθού");
+    });
     it("converts correctly sentences", () => {
-        assert.equal(convertToMonotonic("Μῆνιν ἄειδε, θεά, Πηληϊάδεω Ἀχιλῆος"), "Μήνιν άειδε, θεά, Πηληϊάδεω Αχιλήος")
-    })
-})
-
+        chai_1.assert.equal((0, accentuation_1.convertToMonotonic)("Μῆνιν ἄειδε, θεά, Πηληϊάδεω Ἀχιλῆος"), "Μήνιν άειδε, θεά, Πηληϊάδεω Αχιλήος");
+    });
+});
 describe("helper accent functions", () => {
     it("recognizes if a syllable is accented (monotonic)", () => {
-        assert.equal(isAccented("μέν"), true)
-    })
+        chai_1.assert.equal((0, accentuation_1.isAccented)("μέν"), true);
+    });
     it("recognizes if a syllable is accented (polytonic)", () => {
-        assert.equal(isAccented("Μῆν"), true)
-    })
+        chai_1.assert.equal((0, accentuation_1.isAccented)("Μῆν"), true);
+    });
     it("put oxia on a vowel", () => {
-        assert.equal(putAccentOnVowel('ο'), 'ό')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccentOnVowel)('ο'), 'ό');
+    });
     it("put accent on a syllable", () => {
-        assert.equal(putAccentOnSyllable('μεν'), 'μέν')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccentOnSyllable)('μεν'), 'μέν');
+    });
     it("put accent on a syllable when it's accented", () => {
-        assert.equal(putAccentOnSyllable('μέν'), 'μέν')
-    })
-
-})
-
+        chai_1.assert.equal((0, accentuation_1.putAccentOnSyllable)('μέν'), 'μέν');
+    });
+});
 describe('Recognizes placement of an accent', () => {
     it("recognizes ULTIMATE", () => {
-        assert.equal(whereIsAccent('φακός'), 'ULTIMATE')
-    })
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)('φακός'), 'ULTIMATE');
+    });
     it("recognizes PENULTIMATE", () => {
-        assert.equal(whereIsAccent("σχολείου"), 'PENULTIMATE')
-    })
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)("σχολείου"), 'PENULTIMATE');
+    });
     it("recognizes ANTEPENULTIMATE", () => {
-        assert.equal(whereIsAccent("άνθρωπος"), "ANTEPENULTIMATE")
-    })
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)("άνθρωπος"), "ANTEPENULTIMATE");
+    });
     it("recognizes correctly accent with true syllabification flag false", () => {
-        assert.equal(whereIsAccent("διαβατήριο", false), "ANTEPENULTIMATE")
-    })
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)("διαβατήριο", false), "ANTEPENULTIMATE");
+    });
     it("recognizes incorrect accent", () => {
-        assert.equal(whereIsAccent('δίαβατηριο'), "INCORRECT_ACCENT")
-    })
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)('δίαβατηριο'), "INCORRECT_ACCENT");
+    });
     it("returns null if no accent", () => {
-        assert.equal(whereIsAccent('διαβατηριο'), null)
-    })
-})
-
+        chai_1.assert.equal((0, accentuation_1.whereIsAccent)('διαβατηριο'), null);
+    });
+});
 describe("putAccent puts correctly accent according to input", () => {
     it('ULTIMATE', () => {
-        assert.equal(putAccent("φακος", "ULTIMATE"), 'φακός')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccent)("φακος", "ULTIMATE"), 'φακός');
+    });
     it('PENULTIMATE', () => {
-        assert.equal(putAccent("μηλο", "PENULTIMATE"), 'μήλο')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccent)("μηλο", "PENULTIMATE"), 'μήλο');
+    });
     it('ANTEPENULTIMATE', () => {
-        assert.equal(putAccent("θεατρο", "ANTEPENULTIMATE"), 'θέατρο')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccent)("θεατρο", "ANTEPENULTIMATE"), 'θέατρο');
+    });
     it('PENULTIMATE true syllabification', () => {
-        assert.equal(putAccent("κυριου", "PENULTIMATE"), 'κύριου')
-    })
+        chai_1.assert.equal((0, accentuation_1.putAccent)("κυριου", "PENULTIMATE"), 'κύριου');
+    });
     it('PENULTIMATE false syllabification', () => {
-        assert.equal(putAccent("κυριου", "PENULTIMATE", false), 'κυρίου')
-    })
-})
+        chai_1.assert.equal((0, accentuation_1.putAccent)("κυριου", "PENULTIMATE", false), 'κυρίου');
+    });
+});
